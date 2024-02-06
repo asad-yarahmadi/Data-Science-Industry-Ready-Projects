@@ -2,12 +2,12 @@ import os
 from pathlib import Path
 import logging
 
-logging.basicConfig(
-    level=logging.info
-    format= "[%(asctim)s: %(levelname)s]: %(message)s"
+logging.basicConfig (
+    level=logging.INFO,
+    format= "[%(asctime)s: %(levelname)s]: %(message)s"
 )
 
-while true:
+while True:
     project_name = input(" Enter the project name: ")
     if project_name != "":
         break
@@ -32,12 +32,13 @@ list_of_files = [
 ]
 
 for filepath in list_of_files:
-    filedir, filename = os.path.split(Path(filepath))
+    filepath = Path(filepath)
+    filedir, filename = os.path.split(filepath)
     if filedir !="":
         os.makedirs(filedir, exist_ok=True)
         logging.info(f"Creating a directory at : {filedir} for file: {filename}")
     if (not os.path.exists(filepath)) or (os.path.getsize(filepath)==0):
-        with open(filePath, "w") as f:
+        with open(filepath, "w") as f:
             pass
             logging.info (f"Creating a new file: {filename} at path: {filepath}")
     else:
